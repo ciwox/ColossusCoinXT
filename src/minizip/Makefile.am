@@ -31,6 +31,7 @@ minizip_include_HEADERS = \
 	ioapi.h \
 	unzip.h \
 	zip.h \
+	minizip.h \
 	${iowin32_h}
 
 pkgconfigdir = $(libdir)/pkgconfig
