@@ -4,7 +4,8 @@
 
 #include "ziputil.h"
 #include "tinyformat.h"
-#include "minizip/minizip.h"
+
+#include <minizip.h>
 
 #include <cassert>
 #include <exception>
