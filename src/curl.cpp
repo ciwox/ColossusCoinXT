@@ -108,9 +108,9 @@ static int ProgressCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow,
 bool CURLGetRedirect(const CUrl& url, CUrl& redirect, string& error)
 {
     CurlScopeInit curl;
-    CURLcode res;
-    char *location;
-    long response_code;
+    CURLcode res = CURLE_OK;
+    char *location = nullptr;
+    long response_code = 0;
 
     redirect.clear();
     error.clear();
@@ -237,6 +237,7 @@ bool CURLDownloadToMem(const CUrl& url, ProgressReport fn, string& buff, string&
 bool CURLDownloadToFile(const CUrl& url, const string& path, ProgressReport fn, string& error)
 {
     CurlScopeInit curl;
+    error.clear();
 
     if (url.empty()) {
         error = "url is empty";
