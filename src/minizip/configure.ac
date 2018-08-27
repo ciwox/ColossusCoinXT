@@ -6,6 +6,9 @@ AC_CONFIG_SRCDIR([minizip.c])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT
 
+dnl make the compilation flags quiet unless V=1 is used
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
 AC_MSG_CHECKING([whether to build example programs])
 AC_ARG_ENABLE([demos], AC_HELP_STRING([--enable-demos], [build example programs]))
 AM_CONDITIONAL([COND_DEMOS], [test "$enable_demos" = yes])

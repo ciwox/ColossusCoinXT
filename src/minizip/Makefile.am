@@ -1,3 +1,5 @@
+ACLOCAL_AMFLAGS = -I build-aux/m4
+
 lib_LTLIBRARIES = libminizip.la
 
 if COND_DEMOS

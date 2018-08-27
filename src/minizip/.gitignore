@@ -6,3 +6,4 @@ install-sh
 ltmain.sh
 minizip.pc
 missing
+build-aux/
