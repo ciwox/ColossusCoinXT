@@ -3,11 +3,8 @@
 
 AC_INIT([minizip], [1.2.8], [bugzilla.redhat.com])
 AC_CONFIG_SRCDIR([minizip.c])
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([no-define foreign])
 LT_INIT
-
-dnl make the compilation flags quiet unless V=1 is used
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_MSG_CHECKING([whether to build example programs])
 AC_ARG_ENABLE([demos], AC_HELP_STRING([--enable-demos], [build example programs]))
@@ -26,10 +23,10 @@ case "${host}" in
 	*)
 		;;
 esac
+
 AM_CONDITIONAL([WIN32], [test "${WIN32}" = "yes"])
-
-
 AC_SUBST([HAVE_UNISTD_H], [0])
 AC_CHECK_HEADER([unistd.h], [HAVE_UNISTD_H=1], [])
 AC_CONFIG_FILES([Makefile minizip.pc])
+AC_CONFIG_COMMANDS([quickfix], [sed -i 's/minizip\\\ 1.2.8/minizip-1.2.8/g' Makefile])
 AC_OUTPUT
