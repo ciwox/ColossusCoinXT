@@ -5077,14 +5077,14 @@ void CWallet::ZPivBackupWallet()
     string strNewBackupName;
 
     for (int i = 0; i < 10; i++) {
-        strNewBackupName = strprintf("wallet-autozpivbackup-%d.dat", i);
+        strNewBackupName = strprintf("wallet-autozcolxbackup-%d.dat", i);
         backupPath = backupDir / strNewBackupName;
 
         if (filesystem::exists(backupPath)) {
             //Keep up to 10 backups
             if (i <= 8) {
                 //If the next file backup exists and is newer, then iterate
-                filesystem::path nextBackupPath = backupDir / strprintf("wallet-autozpivbackup-%d.dat", i + 1);
+                filesystem::path nextBackupPath = backupDir / strprintf("wallet-autozcolxbackup-%d.dat", i + 1);
                 if (filesystem::exists(nextBackupPath)) {
                     time_t timeThis = filesystem::last_write_time(backupPath);
                     time_t timeNext = filesystem::last_write_time(nextBackupPath);
@@ -5099,7 +5099,7 @@ void CWallet::ZPivBackupWallet()
                 continue;
             }
             //reset to 0 because name with 9 already used
-            strNewBackupName = strprintf("wallet-autozpivbackup-%d.dat", 0);
+            strNewBackupName = strprintf("wallet-autozcolxbackup-%d.dat", 0);
             backupPath = backupDir / strNewBackupName;
             break;
         }
